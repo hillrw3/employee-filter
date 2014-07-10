@@ -14,13 +14,15 @@ class EmployeeFilter
   end
 
   def all_with_start_date
+    em_info = []
     @employees.each do |employee_hash|
-      first = employee_hash.values_at(:first_name)
-      last = employee_hash.values_at(:last_name)
-      title = employee_hash.values_at(:title)
-      start_date = employee_hash.values_at(:start_date)
-      "#{first} #{last} (#{title}) - #{start_date}"
+      first = employee_hash[:first_name]
+      last = employee_hash[:last_name]
+      title = employee_hash[:title]
+      start_date = employee_hash[:start_date]
+      em_info << "#{first} #{last} (#{title}) - #{start_date.month}/#{start_date.day}/#{start_date.year}"
     end
+    em_info
   end
 
 end
